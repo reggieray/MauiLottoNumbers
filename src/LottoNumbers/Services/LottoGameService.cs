@@ -1,6 +1,5 @@
 ﻿using LottoNumbers.Constants;
 using LottoNumbers.Models;
-using System.Text;
 
 namespace LottoNumbers.Services
 {
