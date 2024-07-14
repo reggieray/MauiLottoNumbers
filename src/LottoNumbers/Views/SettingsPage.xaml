@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LottoNumbers.Views.SettingsPage"
+    xmlns:controls="clr-namespace:LottoNumbers.Controls"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    Title="{Binding Title}">
+    <ContentPage.Resources>
+        <Style x:Key="Separator" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Color" Value="Gray" />
+            <Setter Property="Margin" Value="0, 5, 0, 5" />
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+            <Label Text="Options" FontSize="Large" />
+
+            <controls:LabeledSwitch 
+                Title="Use date seed"
+                Detail="The number ticks that represent the date will get used to seed the random number genrator. This will always produce the same generated numbers." 
+                Margin="5"
+                IsChecked="{Binding UsePseudorandomSeed, Mode=TwoWay}" />
+
+            <DatePicker 
+                    Date="{Binding PseudorandomDateSeed}" 
+                    IsEnabled="{Binding UsePseudorandomSeed}" />
+
+            <BoxView Style="{StaticResource Separator}" />
+
+            <Label Text="Attributions" FontSize="Large" />
+            <Label Text="evaschicker / LottieFiles" />
+
+            <BoxView Style="{StaticResource Separator}" />
+
+            <Label Text="About" FontSize="Large" />
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="This app uses a " />
+                        <controls:HyperlinkSpan Text="pseudorandom number generator"
+                                                Url="https://en.wikipedia.org/wiki/Pseudorandom_number_generator" />
+                        <Span Text=" to generate numbers" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
